@@ -692,6 +692,7 @@ class DataProcPigOperator(BaseOperator):
         job.add_jar_file_uris(self.dataproc_jars)
         job.set_job_name(self.job_name)
 
+        super(DataProcPigOperator, self).execute(context)
         job_to_submit = job.build()
         self.dataproc_job_id = job_to_submit["job"]["reference"]["jobId"]
 
